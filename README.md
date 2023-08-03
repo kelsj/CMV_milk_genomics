@@ -6,6 +6,4 @@ Human Cytomegalovirus in breast milk is associated with milk composition, the in
 
 Johnson et al. 2023
 
-https://doi.org/10.1101/2023.07.19.549370
-
 https://www.biorxiv.org/content/10.1101/2023.07.19.549370v1
