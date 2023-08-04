@@ -1,6 +1,6 @@
 ## CMV_milk_genomics
 
-This repository contains code to produce the figures in:
+This repository contains code to reproduce the figures in:
 
 Human Cytomegalovirus in breast milk is associated with milk composition, the infant gut microbiome, and infant growth
 
