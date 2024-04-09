@@ -40,4 +40,10 @@ ggplot(both.align %>% mutate(pos.kb = pos1/1000)) + geom_density(aes(x=pos.kb,y=
 ggsave("../figs/fig1D.png",width=4,height=3)
 
 
+## Figure 1E: confusion matrix of CMV calls from qPCR vs. shotgun sequencing
+
+
+
+
+
 
