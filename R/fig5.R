@@ -109,7 +109,18 @@ model4d <- ' # direct effect
 model4d.fit <- sem(model4d, data = med.dat2, bootstrap=1000)
 lavaanPlot(model4d.fit, coefs = TRUE)
 summary(model4d.fit)$pe
-
+# lhs op           rhs label exo         est         se           z       pvalue
+# 1          wlz_1  ~ logKynurenine     f   0 0.139510939 0.07343914  1.89968106 5.747499e-02
+# 2          wlz_1  ~         wlz_0     z   0 0.222376511 0.05115159  4.34740141 1.377600e-05
+# 3        cmv.bin  ~ logKynurenine     d   0 0.179088478 0.03153401  5.67921670 1.353130e-08
+# 4          wlz_1  ~       cmv.bin     e   0 0.008595956 0.15276334  0.05626976 9.551269e-01
+# 5          wlz_1 ~~         wlz_1         0 0.946915712 0.09469157 10.00000000 0.000000e+00
+# 6        cmv.bin ~~       cmv.bin         0 0.202881763 0.02028818 10.00000000 0.000000e+00
+# 7  logKynurenine ~~ logKynurenine         1 1.020127852 0.00000000          NA           NA
+# 8  logKynurenine ~~         wlz_0         1 0.038238935 0.00000000          NA           NA
+# 9          wlz_0 ~~         wlz_0         1 1.810951689 0.00000000          NA           NA
+# 10            de :=           d*e    de   0 0.001539437 0.02735950  0.05626699 9.551291e-01
+# 11         total :=       f+(d*e) total   0 0.141050375 0.06815359  2.06959569 3.849022e-02
 
 
 ## Fig. 5F: SEM with CMV load
@@ -120,6 +131,7 @@ cmv.pos.med = metadata %>% select(indID,wlz_0,wlz_1,shotgun.cmv.prop,logKynureni
   mutate(logKynurenine=as.numeric(scale(logKynurenine))) %>% na.omit()
 
 # relab>kynu>wlz1
+set.seed(1234)
 pos.mod1 <- ' # direct effect
              wlz_1 ~ z*wlz_0 + c*log.ra
            # mediator
@@ -133,5 +145,16 @@ pos.mod1 <- ' # direct effect
 pos.mod1.fit <- sem(pos.mod1, data = cmv.pos.med, bootstrap=1000)
 lavaanPlot(pos.mod1.fit, coefs = TRUE)
 summary(pos.mod1.fit)$pe
-
+# lhs op           rhs label exo         est         se          z       pvalue
+# 1          wlz_1  ~         wlz_0     z   0  0.19671067 0.08079735  2.4346179 1.490752e-02
+# 2          wlz_1  ~        log.ra     c   0 -0.24480261 0.10912905 -2.2432395 2.488137e-02
+# 3  logKynurenine  ~        log.ra     a   0  0.25082550 0.10442204  2.4020361 1.630410e-02
+# 4          wlz_1  ~ logKynurenine     b   0  0.10942679 0.11556641  0.9468737 3.437031e-01
+# 5          wlz_1 ~~         wlz_1         0  0.81837590 0.13275810  6.1644140 7.074463e-10
+# 6  logKynurenine ~~ logKynurenine         0  0.80626166 0.13079291  6.1644140 7.074463e-10
+# 7          wlz_0 ~~         wlz_0         1  1.64963751 0.00000000         NA           NA
+# 8          wlz_0 ~~        log.ra         1 -0.01267765 0.00000000         NA           NA
+# 9         log.ra ~~        log.ra         1  0.97292218 0.00000000         NA           NA
+# 10            ab :=           a*b    ab   0  0.02744703 0.03115787  0.8809021 3.783708e-01
+# 11         total :=       c+(a*b) total   0 -0.21735558 0.10582755 -2.0538657 3.998869e-02
 
