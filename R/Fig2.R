@@ -11,8 +11,7 @@ theme_set(theme_bw())
 setwd("~/Documents/postdoc/milk_genomics/CMV/manuscript_drafts/code_to_share/CMV_milk_genomics/R/")
 
 ## load differential gene expression results - Table S4
-table.s4 = read_excel("~/Documents/postdoc/milk_genomics/CMV/manuscript_drafts/supp_tables/CMV_milk_genomics_suppTables_v2.xlsx",
-                      sheet=4)
+table.s4 = read_excel("../data/CMV_milk_genomics_suppTables_v4.xlsx",sheet=4)
 
 ## Figure 2A
 # calculated distribution expected P-values (uniform distr.)
